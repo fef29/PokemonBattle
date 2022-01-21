@@ -1,5 +1,5 @@
 
-# Pokemon stats
+# Pokemon baseStats
 
 HP = 'HP'
 ATTACK = 'Attack'

@@ -1,7 +1,8 @@
 
-from models import *
+from models.Battle import *
+from models.Pokemon import *
 
-# First, define a pokemon with its stats
+# First, define a pokemon with its baseStats
 
 pokemon1 = Pokemon('Bulbasaur', 100, 'grass', 'poisson')
 pokemon2 = Pokemon('Charmander', 100, 'fire', None)
@@ -10,7 +11,7 @@ pokemon1.current_hp = 45
 pokemon2.current_hp = 39
 
 # Stats
-pokemon1.stats = {
+pokemon1.baseStats = {
     HP: 45,
     ATTACK: 49,
     DEFENSE: 49,
@@ -19,7 +20,7 @@ pokemon1.stats = {
     SPEED: 45
 }
 
-pokemon2.stats = {
+pokemon2.baseStats = {
     HP: 39,
     ATTACK: 52,
     DEFENSE: 43,
@@ -47,7 +48,7 @@ def ask_command(pokemon):
                     command = Command({DO_ATTACK: int(tmp_command[1])})
 
             except Exception:
-                pass
+                print('Please, explicit a valid attack')
     return command
 
 

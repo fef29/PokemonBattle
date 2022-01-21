@@ -13,6 +13,16 @@ class Battle:
             self.print_winner()
         return finished
 
+    def print_winner(self):
+        if self.pokemon1.current_hp <= 0 < self.pokemon2.current_hp:
+            print(self.pokemon2 + ' won in ' + str(self.actual_turn) + ' turns!!')
+
+        elif self.pokemon2.current_hp <= 0 < self.pokemon1.current_hp:
+            print(self.pokemon1.name + ' won in ' + str(self.actual_turn) + ' turns!!')
+
+        else:
+            print('Double KO!!!')
+
     def execute_turn(self, turn):
         command1 = turn.command1
         command2 = turn.command2
@@ -29,46 +39,9 @@ class Battle:
 
         self.actual_turn += 1
 
-    def print_winner(self):
-        if self.pokemon1.current_hp <= 0 < self.pokemon2.current_hp:
-            print(self.pokemon2 + ' won in ' + str(self.actual_turn) + ' turns!!')
-
-        elif self.pokemon2.current_hp <= 0 < self.pokemon1.current_hp:
-            print(self.pokemon1.name + ' won in ' + str(self.actual_turn) + ' turns!!')
-
-        else:
-            print('Double KO!!!')
-
     def print_current_status(self):
         print(self.pokemon1.name + ' has ' + str(self.pokemon1.current_hp) + ' left!')
         print(self.pokemon2.name + ' has ' + str(self.pokemon2.current_hp) + ' left!')
-
-
-class Pokemon:
-    def __init__(self, name, level, type1, type2):
-        self.name = name
-        self.level = level
-        self.type1 = type1
-        self.type2 = type2
-        self.attacks = []  # vector de ataques
-        self.stats = {}
-        self.current_status = 0
-        self.current_hp = 0
-
-
-class Attack:
-    def __init__(self, name, t, category, pp, power, accuracy):
-        self.name = name
-        self.type = t
-        self.category = category
-        self.pp = pp
-        self.power = power
-        self.accuracy = accuracy
-
-
-class Command:
-    def __init__(self, action):
-        self.action = action
 
 
 class Turn:
@@ -78,3 +51,8 @@ class Turn:
 
     def can_start(self):
         return self.command1 is not None and self.command2 is not None
+
+
+class Command:
+    def __init__(self, action):
+        self.action = action
